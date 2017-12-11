@@ -47,3 +47,12 @@ class Lexer:
                         lib += content[i]
                         i += 1
                     self.tokens.append(Token(4, close_string))
+                    i = self.skip_blank(i + 1)
+                    break
+                else:
+                    print ('include error!')
+                    exit()
+
+        #if content begins with letter or down slash
+        elif content[i].isalpha() or content[i] == '_':
+            #find the string
