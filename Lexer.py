@@ -61,3 +61,10 @@ class Lexer:
                 temp += content[i]
                 i += 1
             #analyze string
+            if self.is_keyword(temp):
+                self.tokens.append(Token(0,temp))
+            else:
+                self.tokens.append(Token(1,temp))
+            i = self.skip_blank(i)
+        #start with digit
+            if self
