@@ -56,3 +56,8 @@ class Lexer:
         #if content begins with letter or down slash
         elif content[i].isalpha() or content[i] == '_':
             #find the string
+            temp = ''
+            while i < len(content) and (content[i].isalpha() or content[i]='_' or content[i].isdigit()):
+                temp += content[i]
+                i += 1
+            #analyze string
