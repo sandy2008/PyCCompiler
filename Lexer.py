@@ -57,7 +57,7 @@ class Lexer:
         elif content[i].isalpha() or content[i] == '_':
             #find the string
             temp = ''
-            while i < len(content) and (content[i].isalpha() or content[i]='_' or content[i].isdigit()):
+            while i < len(content) and (content[i].isalpha() or content[i]=='_' or content[i].isdigit()):
                 temp += content[i]
                 i += 1
             #analyze string
@@ -67,4 +67,36 @@ class Lexer:
                 self.tokens.append(Token(1,temp))
             i = self.skip_blank(i)
         #start with digit
-            if self
+        elif content[i].isdigit():
+            temp = ''
+            while i < len(content):
+                temp += content[i]
+                i += 1
+                #analyze string
+                if content[i].isdigit() or (content[i] == '.' and content[i + 1].isdigit()):
+                    temp += content[i]
+                    i += 1
+                elif not content[i].isdigit():
+                    if content[i] == '.':
+                        print ('float number not supported yet')
+                        exit()
+                    else:
+                        break
+            self.tokens.append(Token(2,temp))
+            i = self.skip_blank(i)
+        #Begin with seperator
+        elif content[i] in delimiters:
+            self.tokens.append(Token(4,content[i]))
+            if content[i] == '\"':
+                i += 1
+                temp = ''
+                while i < len(content):
+                    if not contents[i]=='\"':
+                        temp += content[i]
+                        i += 1
+                    else:
+                        break
+                else:
+                    print('error: lack of \"')
+                    exit()
+                self.tokens.append(Token(5,temp))
