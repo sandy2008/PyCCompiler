@@ -202,3 +202,13 @@ if __name__ == '__main__':
         elif opt == '-l':
             lexer()
 
+class SyntaxTreeNode(object):
+    def __init__(self, value=None, _type=None, extra_info=None):
+        self.valjue = value
+        self.type = _type
+
+        self.extra_info = extra_info
+        self.father = None
+        self.left = None
+        self.right = None
+        self.first_son = None
