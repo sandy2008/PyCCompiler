@@ -1559,7 +1559,21 @@ if __name__ == '__main__':
             content = source_file.read()
         elif opt == '-l':
             lexer()
+<<<<<<< HEAD
         elif opt == '-p':
             parser()
         elif opt == '-a':
             assembler()
+=======
+
+class SyntaxTreeNode(object):
+    def __init__(self, value=None, _type=None, extra_info=None):
+        self.valjue = value
+        self.type = _type
+
+        self.extra_info = extra_info
+        self.father = None
+        self.left = None
+        self.right = None
+        self.first_son = None
+>>>>>>> 54efb4e56b8a6ca9a9e6fbb8d50c39a937740d17
